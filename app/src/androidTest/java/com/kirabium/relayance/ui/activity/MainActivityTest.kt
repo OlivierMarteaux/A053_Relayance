@@ -1,6 +1,5 @@
 package com.kirabium.relayance.ui.activity
 
-import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
