@@ -1,5 +1,8 @@
 import com.android.build.gradle.BaseExtension
+import org.gradle.internal.impldep.org.apache.commons.lang.NumberUtils.maximum
+import org.gradle.internal.impldep.org.apache.commons.lang.NumberUtils.minimum
 import org.gradle.kotlin.dsl.androidTestImplementation
+import org.jdom2.filter.Filters.element
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -73,12 +76,14 @@ android {
 
 val androidExtension = extensions.getByType<BaseExtension>()
 
+//_ setup a jacoco test report task including unit tests, android tests and global coverage:
 val jacocoTestReport by tasks.registering(JacocoReport::class) {
     dependsOn("testDebugUnitTest", "createDebugCoverageReport")
     group = "Reporting"
     description = "Generate Jacoco coverage reports"
 
     reports {
+        csv.required.set(false)
         xml.required.set(true)
         html.required.set(true)
     }
@@ -93,6 +98,40 @@ val jacocoTestReport by tasks.registering(JacocoReport::class) {
     })
 }
 
+//_ The JacocoCoverageVerification task can be used to verify if code coverage metrics are met
+val jacocoTestCoverageCheck by tasks.registering(JacocoCoverageVerification::class) {
+    dependsOn("testDebugUnitTest", "createDebugCoverageReport")
+    group = "Verification"
+    description = "Verifies code coverage metrics"
+
+    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug")
+    val mainSrc = androidExtension.sourceSets.getByName("main").java.srcDirs
+
+    classDirectories.setFrom(debugTree)
+    sourceDirectories.setFrom(files(mainSrc))
+    executionData.setFrom(fileTree(buildDir) {
+        include("**/*.exec", "**/*.ec")
+    })
+
+    violationRules {
+        rule {
+            isEnabled = true
+            limit {
+                minimum = "0.5".toBigDecimal() // 50% minimum coverage
+            }
+        }
+
+        rule {
+            isEnabled = true
+            element = "CLASS"
+            limit {
+                counter = "LINE"
+                value = "COVEREDRATIO"
+                minimum = "0.5".toBigDecimal() // each class must have ≥ 50% line coverage
+            }
+        }
+    }
+}
 
 dependencies {
 
