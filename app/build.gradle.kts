@@ -7,8 +7,9 @@ import org.jdom2.filter.Filters.element
 
 plugins {
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.kotlin.compose) // Compose Compiler Gradle plugin required from Kotlin 2.0
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.ksp)
     id("jacoco")
 }
 tasks.withType<Test> {
@@ -177,6 +178,11 @@ dependencies {
     //_ icons
     implementation(libs.material.icons.core)
     implementation(libs.material.icons.extended)
+    //_ oliviermarteaux
+    implementation(libs.oliviermarteaux.compose)
+    implementation(libs.oliviermarteaux.core)
+    //_ navigation
+    implementation(libs.navigation.compose)
 
     testImplementation(libs.junit)
 

@@ -17,6 +17,8 @@ material = "1.13.0"
 rules = "1.7.0"
 runner = "1.7.0"
 oliviermarteaux = "2.1.0"
+navigationCompose = "2.9.5"
+ksp = "2.2.20-2.0.3"
 
 [libraries]
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
@@ -47,9 +49,11 @@ oliviermarteaux-compose = { module = "com.github.OlivierMarteaux.shared-android-
 oliviermarteaux-core = { module = "com.github.OlivierMarteaux.shared-android-library:core", version.ref = "oliviermarteaux" }
 material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 material-icons-core = { module = "androidx.compose.material:material-icons-core" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
-jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 

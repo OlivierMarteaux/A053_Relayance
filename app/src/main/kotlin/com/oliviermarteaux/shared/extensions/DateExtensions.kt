@@ -1,4 +1,4 @@
-package oliviermarteaux.shared.extensions
+package com.oliviermarteaux.shared.extensions
 
 import java.text.SimpleDateFormat
 import java.util.Calendar
