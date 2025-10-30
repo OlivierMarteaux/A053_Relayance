@@ -10,8 +10,10 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.kirabium.relayance.R
-import com.kirabium.relayance.data.DummyData
-import com.kirabium.relayance.ui.adapter.CustomerAdapter
+import com.kirabium.relayance.data.service.DummyData
+import com.kirabium.relayance.ui.screens.detailScreen.DetailActivity
+import com.kirabium.relayance.ui.screens.homeScreen.CustomerAdapter
+import com.kirabium.relayance.ui.screens.homeScreen.MainActivity
 import com.kirabium.relayance.util.RecyclerViewItemCountAssertion
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.After

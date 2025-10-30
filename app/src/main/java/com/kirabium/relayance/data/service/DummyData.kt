@@ -1,18 +1,17 @@
-package com.kirabium.relayance.data
+package com.kirabium.relayance.data.service
 
 import com.kirabium.relayance.domain.model.Customer
 import java.util.Calendar
 import java.util.Date
 
-
-object DummyData {
+object DummyData: CustomerApi {
     fun generateDate(monthsBack: Int): Date {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, -monthsBack)
         return calendar.time
     }
 
-    val customers = listOf(
+    override val customers = listOf(
         Customer(1, "Alice Wonderland", "alice@example.com", generateDate(12)),
         Customer(2, "Bob Builder", "bob@example.com", generateDate(6)),
         Customer(3, "Charlie Chocolate", "charlie@example.com", generateDate(3)),

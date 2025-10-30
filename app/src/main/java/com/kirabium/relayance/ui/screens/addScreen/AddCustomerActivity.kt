@@ -1,4 +1,4 @@
-package com.kirabium.relayance.ui.activity
+package com.kirabium.relayance.ui.screens.addScreen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

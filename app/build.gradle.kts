@@ -1,6 +1,7 @@
 import com.android.build.gradle.BaseExtension
 import org.gradle.internal.impldep.org.apache.commons.lang.NumberUtils.maximum
 import org.gradle.internal.impldep.org.apache.commons.lang.NumberUtils.minimum
+import org.gradle.internal.impldep.org.jsoup.nodes.Document
 import org.gradle.kotlin.dsl.androidTestImplementation
 import org.jdom2.filter.Filters.element
 
@@ -18,7 +19,7 @@ tasks.withType<Test> {
 }
 android {
     namespace = "com.kirabium.relayance"
-    compileSdk = 34
+    compileSdk = 36
 
     testCoverage {
         version = "0.8.8"
@@ -73,12 +74,38 @@ android {
         }
     }
 }
+//_ Ensure use an emulator for android tests
+tasks.register("ensureEmulator") {
+    doFirst {
+        val adbOutput = ProcessBuilder("adb", "devices")
+            .redirectErrorStream(true)
+            .start()
+            .inputStream
+            .bufferedReader()
+            .readText()
+
+        val connectedDevices = adbOutput.lines()
+            .filter { it.isNotBlank() && !it.startsWith("List") && it.contains("device") }
+
+        val emulators = connectedDevices.filter { it.startsWith("emulator-") }
+
+        if (emulators.isEmpty()) {
+            throw GradleException("❌ No emulator detected. Please start one before running tests.")
+        }
+
+        if (connectedDevices.size > emulators.size) {
+            throw GradleException("⚠️ Physical device(s) detected. Disconnect them to run tests only on emulator.")
+        }
+
+        println("✅ Emulator detected (${emulators.joinToString()}). Proceeding with tests.")
+    }
+}
 
 val androidExtension = extensions.getByType<BaseExtension>()
 
 //_ setup a jacoco test report task including unit tests, android tests and global coverage:
 val jacocoTestReport by tasks.registering(JacocoReport::class) {
-    dependsOn("testDebugUnitTest", "createDebugCoverageReport")
+    dependsOn("clean" , "ensureEmulator", "testDebugUnitTest", "createDebugCoverageReport")
     group = "Reporting"
     description = "Generate Jacoco coverage reports"
 
@@ -100,7 +127,7 @@ val jacocoTestReport by tasks.registering(JacocoReport::class) {
 
 //_ The JacocoCoverageVerification task can be used to verify if code coverage metrics are met
 val jacocoTestCoverageCheck by tasks.registering(JacocoCoverageVerification::class) {
-    dependsOn("testDebugUnitTest", "createDebugCoverageReport")
+    dependsOn("clean" , "ensureEmulator","testDebugUnitTest", "createDebugCoverageReport")
     group = "Verification"
     description = "Verifies code coverage metrics"
 
@@ -147,7 +174,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    //_ icons
+    implementation(libs.material.icons.core)
+    implementation(libs.material.icons.extended)
+
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.test.core)        // ActivityScenario support
     androidTestImplementation(libs.androidx.test.rules)                 // ActivityScenarioRule (optional)
     androidTestImplementation(libs.androidx.test.espresso.contrib)
@@ -158,6 +190,7 @@ dependencies {
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(platform(libs.androidx.compose.bom))
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
