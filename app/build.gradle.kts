@@ -79,6 +79,7 @@ val jacocoTestReport by tasks.registering(JacocoReport::class) {
     description = "Generate Jacoco coverage reports"
 
     reports {
+        csv.required.set(false)
         xml.required.set(true)
         html.required.set(true)
     }
