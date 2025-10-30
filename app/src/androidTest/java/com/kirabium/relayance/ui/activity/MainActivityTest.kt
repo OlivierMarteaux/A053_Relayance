@@ -13,7 +13,7 @@ import com.kirabium.relayance.R
 import com.kirabium.relayance.data.service.DummyData
 import com.kirabium.relayance.ui.screens.detailScreen.DetailActivity
 import com.kirabium.relayance.ui.screens.homeScreen.CustomerAdapter
-import com.kirabium.relayance.ui.MainActivity
+import com.kirabium.relayance.MainActivity
 import com.kirabium.relayance.util.RecyclerViewItemCountAssertion
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.After

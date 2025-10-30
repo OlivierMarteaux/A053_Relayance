@@ -11,7 +11,7 @@ object DummyData: CustomerApi {
         return calendar.time
     }
 
-    override val customers = listOf(
+    override val customers = mutableListOf(
         Customer(1, "Alice Wonderland", "alice@example.com", generateDate(12)),
         Customer(2, "Bob Builder", "bob@example.com", generateDate(6)),
         Customer(3, "Charlie Chocolate", "charlie@example.com", generateDate(3)),

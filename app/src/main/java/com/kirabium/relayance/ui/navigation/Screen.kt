@@ -1,6 +1,8 @@
 package com.kirabium.relayance.ui.navigation
 
 import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 
 /**
  * A sealed class that represents the different screens in the application.
@@ -10,7 +12,8 @@ import androidx.navigation.NamedNavArgument
  */
 sealed class Screen(
   val route: String,
-  val navArguments: List<NamedNavArgument> = emptyList()
+  val navArguments: List<NamedNavArgument> = emptyList(),
+  val routeWithArgs: String = ""
 ) {
   /**
    * The home screen.
@@ -20,7 +23,11 @@ sealed class Screen(
   /**
    * The detail screen.
    */
-  data object Detail : Screen("detail/{customer_id}")
+  data object Detail : Screen(
+    route = "detail",
+    navArguments = listOf(navArgument("customer_id") { type = NavType.IntType }),
+    routeWithArgs = "detail/{customer_id}"
+    )
 
   /**
    * The add screen.

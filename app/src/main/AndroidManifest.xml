@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".RelayanceApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,14 +15,14 @@
         <activity
             android:name=".ui.screens.addScreen.AddCustomerActivity"
             android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
+            android:parentActivityName=".MainActivity" />
+<!--        <activity-->
+<!--            android:name=".ui.screens.detailScreen.DetailActivity"-->
+<!--            android:exported="false"-->
+<!--            android:theme="@style/Theme.Relayance.NoActionBar"-->
+<!--            android:parentActivityName=".MainActivity" />-->
         <activity
-            android:name=".ui.screens.detailScreen.DetailActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Relayance.NoActionBar"
-            android:parentActivityName=".ui.MainActivity" />
-        <activity
-            android:name=".ui.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

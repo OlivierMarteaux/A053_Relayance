@@ -4,4 +4,5 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false // Compose Compiler Gradle plugin required from Kotlin 2.0
     alias(libs.plugins.kotlin) apply false
     alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.hilt) apply false
 }

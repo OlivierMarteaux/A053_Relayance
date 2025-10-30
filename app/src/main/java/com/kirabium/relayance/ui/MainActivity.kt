@@ -1,22 +1,5 @@
 package com.kirabium.relayance.ui
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.compose.rememberNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.kirabium.relayance.data.service.DummyData
-import com.kirabium.relayance.databinding.ActivityMainBinding
-import com.kirabium.relayance.ui.navigation.RelayanceNavHost
-
-import com.kirabium.relayance.ui.screens.homeScreen.HomeScreen
-import com.oliviermarteaux.shared.composables.startup.DismissKeyboardOnTapOutside
-import com.oliviermarteaux.shared.composables.startup.RequestNotificationPermission
-import com.oliviermarteaux.shared.firebase.firebaseCloudMessaging.getDeviceToken
-import com.openclassrooms.hexagonal.games.ui.theme.RelayanceTheme
-
 //class MainActivity : AppCompatActivity() {
 //
 //    private lateinit var binding: ActivityMainBinding
@@ -55,28 +38,3 @@ import com.openclassrooms.hexagonal.games.ui.theme.RelayanceTheme
 //    }
 //}
 
-class MainActivity : ComponentActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContent {
-            val navController = rememberNavController()
-//
-//            // Observe current backstack entry
-//            val currentBackStackEntry by navController.currentBackStackEntryAsState()
-//            LaunchedEffect(currentBackStackEntry) {
-//                currentBackStackEntry?.destination?.route?.let { route ->
-//                    Log.i("OM_TAG", " ${route.uppercase()} SCREEN")
-//                }
-//            }
-            RelayanceTheme {
-//        SetStatusBarColor(Color.Transparent)
-//                RequestNotificationPermission()
-//                getDeviceToken()
-                RelayanceNavHost(navHostController = navController)
-//                DismissKeyboardOnTapOutside { HomeScreen() }
-            }
-        }
-    }
-}

@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.kotlin.compose) // Compose Compiler Gradle plugin required from Kotlin 2.0
     alias(libs.plugins.kotlin)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
     id("jacoco")
 }
 tasks.withType<Test> {
@@ -183,6 +184,10 @@ dependencies {
     implementation(libs.oliviermarteaux.core)
     //_ navigation
     implementation(libs.navigation.compose)
+    //_ hilt
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
 
     testImplementation(libs.junit)
 
