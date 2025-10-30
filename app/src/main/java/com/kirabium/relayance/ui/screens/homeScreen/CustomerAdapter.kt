@@ -1,4 +1,4 @@
-package com.kirabium.relayance.ui.adapter
+package com.kirabium.relayance.ui.screens.homeScreen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

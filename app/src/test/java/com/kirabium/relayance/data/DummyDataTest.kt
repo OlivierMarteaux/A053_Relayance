@@ -1,5 +1,6 @@
 package com.kirabium.relayance.data
 
+import com.kirabium.relayance.data.service.DummyData
 import org.junit.Test
 import org.junit.Assert.*
 import java.util.Calendar

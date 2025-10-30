@@ -8,8 +8,9 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import com.kirabium.relayance.R
-import com.kirabium.relayance.data.DummyData
+import com.kirabium.relayance.data.service.DummyData
 import com.kirabium.relayance.extension.DateExt.Companion.toHumanDate
+import com.kirabium.relayance.ui.screens.detailScreen.DetailActivity
 import org.junit.Rule
 import org.junit.Test
 
