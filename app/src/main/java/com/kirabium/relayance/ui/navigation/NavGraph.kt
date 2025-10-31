@@ -2,11 +2,8 @@ package com.kirabium.relayance.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
-import com.kirabium.relayance.domain.model.Customer
 import com.kirabium.relayance.ui.screens.addScreen.AddScreen
 import com.kirabium.relayance.ui.screens.detailScreen.DetailScreen
 import com.kirabium.relayance.ui.screens.homeScreen.HomeScreen
@@ -28,7 +25,9 @@ fun RelayanceNavHost(navHostController: NavHostController) {
                 navigateToDetailScreen = { customerId ->
                     navHostController.navigate(Screen.Detail.route + "/$customerId")
                 },
-                navigateToAddScreen = { navHostController.navigate(Screen.Add.route) }
+                navigateToAddScreen = { newCustomerId ->
+                    navHostController.navigate(Screen.Add.route + "/$newCustomerId")
+                }
             )
         }/*_ DETAIL SCREEN ###########################################################################*/
         composable(
@@ -40,7 +39,10 @@ fun RelayanceNavHost(navHostController: NavHostController) {
             )
         }
         /*_ ADD POST SCREEN ##########################################################################*/
-        composable(route = Screen.Add.route) {
+        composable(
+            route = Screen.Add.routeWithArgs,
+            arguments = Screen.Add.navArguments
+        ) {
             AddScreen(navigateBack = { navHostController.navigateUp() })
         }
     }

@@ -6,4 +6,6 @@ interface CustomerApi {
 
     val customers: List<Customer>
 
+    fun addCustomer(customer: Customer)
+
 }

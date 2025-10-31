@@ -32,6 +32,9 @@ sealed class Screen(
   /**
    * The add screen.
    */
-  data object Add : Screen("add")
-
+  data object Add : Screen(
+    route = "add",
+    navArguments = listOf(navArgument("new_customer_id") { type = NavType.IntType }),
+    routeWithArgs = "add/{new_customer_id}"
+  )
 }
