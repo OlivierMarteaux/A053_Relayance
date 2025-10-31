@@ -189,8 +189,14 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
+    //_ UNIT TESTS
     testImplementation(libs.junit)
+    //_ cucumber
+    testImplementation(libs.cucumber.java)
+    testImplementation(libs.cucumber.junit)
+    testImplementation(libs.cucumber.picocontainer)
 
+    //_ ANDROID TESTS
     androidTestImplementation(libs.androidx.test.core)        // ActivityScenario support
     androidTestImplementation(libs.androidx.test.rules)                 // ActivityScenarioRule (optional)
     androidTestImplementation(libs.androidx.test.espresso.contrib)
@@ -201,7 +207,9 @@ dependencies {
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(platform(libs.androidx.compose.bom))
-
+    //_ cucumber
+    androidTestImplementation(libs.cucumber.android)
+    androidTestImplementation(libs.cucumber.picocontainer)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
