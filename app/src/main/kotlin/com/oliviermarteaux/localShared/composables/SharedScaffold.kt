@@ -1,6 +1,6 @@
 package com.oliviermarteaux.localShared.composables
 
-import android.R.attr.navigationIcon
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -14,12 +14,17 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.oliviermarteaux.shared.composables.IconSource
 import com.oliviermarteaux.shared.composables.SharedIcon
@@ -39,6 +44,11 @@ fun SharedScaffold(
     onMenuItem2Click: (() -> Unit)? = null,
     menuItem1Title: String = "",
     menuItem2Title: String = "",
+    fabShape: Shape =  FloatingActionButtonDefaults.shape,
+    fabContainerColor: Color =  FloatingActionButtonDefaults.containerColor,
+    fabContentColor: Color = contentColorFor(fabContainerColor),
+    fabInteractionSource: MutableInteractionSource? = null,
+    fabContentDescription: String = "",
     content: @Composable (contentPadding: PaddingValues) -> Unit = {},
 ){
     var showMenu by rememberSaveable { mutableStateOf(false) }
@@ -65,23 +75,19 @@ fun SharedScaffold(
                             onDismissRequest = { showMenu = false }
                         ) {
                             DropdownMenuItem(
+                                text = { TextTitleSmall(text = menuItem1Title) },
                                 onClick = {
                                     onMenuItem1Click()
                                     showMenu = false
                                 },
-                                text = {
-                                    TextTitleSmall(text = menuItem1Title)
-                                }
                             )
                             onMenuItem2Click?.let {
                                 DropdownMenuItem(
+                                    text = { TextTitleSmall(text = menuItem2Title) },
                                     onClick = {
                                         onMenuItem2Click()
                                         showMenu = false
                                     },
-                                    text = {
-                                        TextTitleSmall(text = menuItem2Title)
-                                    }
                                 )
                             }
                         }
@@ -92,9 +98,15 @@ fun SharedScaffold(
         floatingActionButton = {
             onFabClick?.let {
                 FloatingActionButton(
-                    modifier = Modifier.padding(bottom = 20.dp, end = 20.dp),
+                    onClick = onFabClick,
+                    modifier = Modifier
+                        .padding(bottom = 20.dp, end = 20.dp)
+                        .semantics{contentDescription = fabContentDescription},
+                    shape = fabShape,
+                    containerColor = fabContainerColor,
+                    contentColor = fabContentColor,
                     elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(10.dp),
-                    onClick = onFabClick
+                    interactionSource = fabInteractionSource
                 ) {
                     SharedIcon(
                         icon = IconSource.VectorIcon(Icons.Filled.Add),

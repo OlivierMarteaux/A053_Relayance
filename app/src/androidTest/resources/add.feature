@@ -14,7 +14,7 @@ Feature: Add a new customer
 
     Then I should return to the Home screen
     And I should see "Fievel Farwest" added at the end of the customer list
-    And I should see a toast message "Customer created successfully"
+    And I should see a toast message "New customer succesfully created"
 
   Scenario: Cannot add new customer when name field is empty
     Given I am on the add screen

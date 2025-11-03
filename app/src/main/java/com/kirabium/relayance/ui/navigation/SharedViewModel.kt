@@ -10,14 +10,9 @@ import javax.inject.Inject
 @HiltViewModel
 class SharedViewModel @Inject constructor(): ViewModel() {
 
-    //_ trigger the toast when customer is created on add screen
+    //_ show the toast on home screen in case a new customer has been created from add screen
     var newCustomerCreated: Boolean by mutableStateOf(false)
         private set
     fun showUserCreatedToast() {newCustomerCreated = true}
-
-//    //_ show the toast on home screen in case a new customer has been created from add screen
-//    private var userCreatedToast: Boolean by mutableStateOf(false)
-
-//    fun showUserCreatedToast() = viewModelScope.launch { showToastFlag { userCreatedToast = it } }
 
 }

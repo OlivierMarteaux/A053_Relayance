@@ -32,7 +32,8 @@ fun HomeScreen(
     SharedScaffold(
         title = stringResource(R.string.app_name),
         topAppBarModifier = Modifier.shadow(4.dp), // adds elevation shadow
-        onFabClick = { navigateToAddScreen(customers.size + 1) }
+        onFabClick = { navigateToAddScreen(customers.size + 1) },
+        fabContentDescription = "Add a new customer"
     ){ innerPadding ->
         with(sharedViewModel) {
             with(homeViewModel) {

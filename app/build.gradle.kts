@@ -1,9 +1,5 @@
+
 import com.android.build.gradle.BaseExtension
-import org.gradle.internal.impldep.org.apache.commons.lang.NumberUtils.maximum
-import org.gradle.internal.impldep.org.apache.commons.lang.NumberUtils.minimum
-import org.gradle.internal.impldep.org.jsoup.nodes.Document
-import org.gradle.kotlin.dsl.androidTestImplementation
-import org.jdom2.filter.Filters.element
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -34,7 +30,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        //_ change testRunner to cucumber one:
+        testInstrumentationRunner = "com/kirabium/relayance/MyCucumberTestRunner.kt"
         vectorDrawables {
             useSupportLibrary = true
         }

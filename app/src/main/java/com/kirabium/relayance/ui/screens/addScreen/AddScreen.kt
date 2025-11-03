@@ -31,7 +31,8 @@ fun AddScreen(
                 onBackClick = navigateBack,
                 onFabClick = {
                     addCustomer{showUserCreatedToast(); navigateBack()}
-                }
+                },
+                fabContentDescription = "Save the new customer"
             ) { innerPadding ->
                 AddBody(
                     name = name,
