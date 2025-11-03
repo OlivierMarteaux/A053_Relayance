@@ -1,10 +1,5 @@
 package com.kirabium.relayance.ui.screens.detailScreen
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import com.kirabium.relayance.data.service.DummyData
-
 //class DetailActivity : AppCompatActivity() {
 //
 //    companion object {

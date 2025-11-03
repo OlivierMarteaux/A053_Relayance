@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.kirabium.relayance.R
+import com.kirabium.relayance.ui.navigation.SharedViewModel
 import com.oliviermarteaux.localShared.composables.SharedScaffold
 import com.oliviermarteaux.shared.composables.SharedOutlinedTextField
 import com.oliviermarteaux.shared.extensions.isValidEmail
@@ -19,25 +20,30 @@ import com.oliviermarteaux.shared.ui.theme.SharedPadding
 @Composable
 fun AddScreen(
     addViewModel: AddViewModel = hiltViewModel(),
+    sharedViewModel: SharedViewModel,
     navigateBack: () -> Unit
 ) {
-    with(addViewModel) {
-        SharedScaffold(
-            title = stringResource(R.string.app_name),
-            topAppBarModifier = Modifier.shadow(4.dp), // adds elevation shadow
-            onBackClick = navigateBack,
-            onFabClick = { addCustomer( navigateBack ) }
-        ) { innerPadding ->
-            AddBody(
-                name = name,
-                email = email,
-                onNameChange = ::onNameChange,
-                onEmailChange = ::onEmailChange,
-                modifier = Modifier
-                    .padding(innerPadding)
-                    .padding(SharedPadding.xl)
-                    .fillMaxSize()
-            )
+    with(sharedViewModel){
+        with(addViewModel) {
+            SharedScaffold(
+                title = stringResource(R.string.app_name),
+                topAppBarModifier = Modifier.shadow(4.dp), // adds elevation shadow
+                onBackClick = navigateBack,
+                onFabClick = {
+                    addCustomer{showUserCreatedToast(); navigateBack()}
+                }
+            ) { innerPadding ->
+                AddBody(
+                    name = name,
+                    email = email,
+                    onNameChange = ::onNameChange,
+                    onEmailChange = ::onEmailChange,
+                    modifier = Modifier
+                        .padding(innerPadding)
+                        .padding(SharedPadding.xl)
+                        .fillMaxSize()
+                )
+            }
         }
     }
 }

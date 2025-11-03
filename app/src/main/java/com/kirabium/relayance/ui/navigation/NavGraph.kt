@@ -1,6 +1,7 @@
 package com.kirabium.relayance.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,7 +15,10 @@ import com.kirabium.relayance.ui.screens.homeScreen.HomeScreen
  * @param navHostController The navigation controller for the application.
  */
 @Composable
-fun RelayanceNavHost(navHostController: NavHostController) {
+fun RelayanceNavHost(
+    navHostController: NavHostController,
+    sharedViewModel: SharedViewModel = hiltViewModel()
+) {
     NavHost(
         navController = navHostController,
         startDestination = Screen.Home.route
@@ -27,7 +31,8 @@ fun RelayanceNavHost(navHostController: NavHostController) {
                 },
                 navigateToAddScreen = { newCustomerId ->
                     navHostController.navigate(Screen.Add.route + "/$newCustomerId")
-                }
+                },
+                sharedViewModel = sharedViewModel
             )
         }/*_ DETAIL SCREEN ###########################################################################*/
         composable(
@@ -43,7 +48,10 @@ fun RelayanceNavHost(navHostController: NavHostController) {
             route = Screen.Add.routeWithArgs,
             arguments = Screen.Add.navArguments
         ) {
-            AddScreen(navigateBack = { navHostController.navigateUp() })
+            AddScreen(
+                navigateBack = { navHostController.navigateUp() },
+                sharedViewModel = sharedViewModel
+            )
         }
     }
 }
