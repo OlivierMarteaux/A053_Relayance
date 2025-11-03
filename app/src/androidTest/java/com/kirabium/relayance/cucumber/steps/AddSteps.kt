@@ -1,4 +1,4 @@
-package com.kirabium.relayance.steps
+package com.kirabium.relayance.cucumber.steps
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -7,14 +7,20 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import com.kirabium.relayance.MainActivity
+import io.cucumber.java.en.And
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
+import io.cucumber.junit.WithJunitRule
 import org.junit.Rule
 
+@WithJunitRule
 class AddSteps {
+
     @get:Rule
     val composeRule = createAndroidComposeRule<MainActivity>()
+
+//    private val composeRule get() = TestContext.composeRule
 
     @Given("I am on the Home screen")
     fun iAmOnTheHomeScreen() {
@@ -26,9 +32,9 @@ class AddSteps {
     }
 
     @When("I click on the {string} FAB button")
-    fun iClickOnFabButton() {
+    fun iClickOnFabButton(fabLabel: String) {
         // Use contentDescription or tag for your FABs
-        composeRule.onNodeWithContentDescription("Add a new customer").performClick()
+        composeRule.onNodeWithContentDescription(fabLabel).performClick()
     }
 
     @Then("I should arrive on the Add screen")
@@ -42,23 +48,12 @@ class AddSteps {
         composeRule.onNodeWithText("name").performTextInput(name)
     }
 
-    @When("I enter {string} in the email field")
+    @And("I enter {string} in the email field")
     fun iEnterEmail(email: String) {
         composeRule.onNodeWithText("email").performTextInput(email)
     }
 
-//    @When("I leave the name field empty")
-//    fun iLeaveNameEmpty() {
-//        // Ensure field exists but no input
-//        composeRule.onNodeWithTag("name_field").performTextClearance()
-//    }
-//
-//    @When("I leave the email field empty")
-//    fun iLeaveEmailEmpty() {
-//        composeRule.onNodeWithTag("email_field").performTextClearance()
-//    }
-
-    @When("I click on the save FAB button")
+    @And("I click on the save FAB button")
     fun iClickSaveFab() {
         composeRule.onNodeWithContentDescription("Save the new customer").performClick()
     }
@@ -71,6 +66,17 @@ class AddSteps {
         composeRule.onNodeWithText("Diana Dream").assertIsDisplayed()
         composeRule.onNodeWithText("Evan Escape").assertIsDisplayed()
     }
+
+//    @When("I leave the name field empty")
+//    fun iLeaveNameEmpty() {
+//        // Ensure field exists but no input
+//        composeRule.onNodeWithTag("name_field").performTextClearance()
+//    }
+//
+//    @When("I leave the email field empty")
+//    fun iLeaveEmailEmpty() {
+//        composeRule.onNodeWithTag("email_field").performTextClearance()
+//    }
 
 //    @Then("I should see {string} added at the end of the customer list")
 //    fun iShouldSeeCustomerInList(name: String) {

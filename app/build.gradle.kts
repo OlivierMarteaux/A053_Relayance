@@ -23,6 +23,14 @@ android {
         version = "0.8.8"
     }
 
+//    fun getInstrumentation(): String {
+//        return if (project.hasProperty("cucumber")) {
+//            "com.kirabium.relayance.runner.MyCucumberTestRunner"
+//        } else {
+//            "androidx.test.runner.AndroidJUnitRunner"
+//        }
+//    }
+
     defaultConfig {
         applicationId = "com.kirabium.relayance"
         minSdk = 24
@@ -31,12 +39,19 @@ android {
         versionName = "1.0"
 
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        //_ change testRunner to cucumber one:
-        testInstrumentationRunner = "com/kirabium/relayance/MyCucumberTestRunner.kt"
+        //_ allow choice between jUnit runner and cucumber one:
+//        testInstrumentationRunner = getInstrumentation()
+        testInstrumentationRunner = "com.kirabium.relayance.runner.MyCucumberTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
     }
+
+//    sourceSets {
+//        androidTest {
+//            assets.srcDirs += files("src/androidTest/assets")
+//        }
+//    }
 
     buildFeatures {
         viewBinding = true
@@ -189,7 +204,7 @@ dependencies {
 
     //_ UNIT TESTS
     testImplementation(libs.junit)
-    //_ cucumber
+    //_ cucumber for UnitTests
     testImplementation(libs.cucumber.java)
     testImplementation(libs.cucumber.junit)
     testImplementation(libs.cucumber.picocontainer)
@@ -203,11 +218,16 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.ext.junit.ktx)
     androidTestImplementation(libs.androidx.test.runner)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    //_ cucumber
+    //_ cucumber for AndroidTests
     androidTestImplementation(libs.cucumber.android)
+    androidTestImplementation(libs.cucumber.junit)
     androidTestImplementation(libs.cucumber.picocontainer)
+    androidTestImplementation(libs.cucumber.messages)
+    androidTestImplementation(kotlin("stdlib"))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
