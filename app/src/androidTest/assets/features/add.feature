@@ -29,8 +29,15 @@ Feature: Add a new customer
     When I enter "" in the "email" field
     Then I cannot click on the "Save the new customer" FAB button
 
-  Scenario: Cannot add new customer when email field is invalid
+  Scenario Outline: Cannot add new customer when email field is invalid
     Given I am on the Add screen
     When I enter "Fievel Farwest" in the "name" field
-    When I enter "invalid email.com" in the "email" field
+    When I enter "<email>" in the "email" field
     Then I cannot click on the "Save the new customer" FAB button
+    Examples:
+      | email     |
+      | x@x.xxxx  |
+      | x.xxx     |
+      | x@x.x     |
+      | x@xxx     |
+      | x         |

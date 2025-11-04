@@ -32,7 +32,9 @@ import org.junit.runner.RunWith
     features = ["features"],   // ✅ IMPORTANT
     glue = [
         "com.kirabium.relayance.cucumber.steps",
-        "com.oliviermarteaux.shared.test.cucumber.steps"
+//        "com.oliviermarteaux.shared.test.cucumber.steps",
+//        "com.kirabium.relayance.di",
+//        "com.kirabium.relayance.hooks"
            ],
     tags = "",
     plugin = [
@@ -43,9 +45,4 @@ import org.junit.runner.RunWith
     ]
 )
 @SuppressWarnings("unused")
-class CucumberTestCase/*{
-
-    // ✅ This is the correct and only place to use @get:Rule
-    @get:Rule
-    val composeTestRule = createAndroidComposeRule<MainActivity>()
-}*/
+class CucumberTestCase
