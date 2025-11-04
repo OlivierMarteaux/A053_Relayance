@@ -66,6 +66,7 @@ class AddSteps {
         composeRule.onNodeWithText("Diana Dream").assertIsDisplayed()
         composeRule.onNodeWithText("Evan Escape").assertIsDisplayed()
     }
+}
 
 //    @When("I leave the name field empty")
 //    fun iLeaveNameEmpty() {
@@ -89,4 +90,3 @@ class AddSteps {
 //        // Simplest option: check that a composable with message text appears.
 //        composeRule.onNodeWithText(message).assertIsDisplayed()
 //    }
-}

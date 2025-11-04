@@ -29,9 +29,15 @@ import org.junit.runner.RunWith
  */
 @RunWith(Cucumber::class)
 @CucumberOptions(
-    features = ["classpath:features"],   // ✅ IMPORTANT
+    features = ["features"],   // ✅ IMPORTANT
     glue = ["com.kirabium.relayance.cucumber.steps"],
-    tags = ""
+    tags = "",
+    plugin = [
+        "pretty",                               // console output
+        "summary",                              // summary at the end
+        "html:/data/data/com.kirabium.relayance/files/cucumber-report.html",  // HTML file on device
+        "json:/data/data/com.kirabium.relayance/files/cucumber-report.json"   // JSON for CI
+    ]
 )
 @SuppressWarnings("unused")
 class CucumberTestCase
