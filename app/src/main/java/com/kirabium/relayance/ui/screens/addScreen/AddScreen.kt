@@ -1,5 +1,6 @@
 package com.kirabium.relayance.ui.screens.addScreen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,7 +33,8 @@ fun AddScreen(
                 onFabClick = {
                     addCustomer{setNewCustomerCreated(); navigateBack()}
                 },
-                fabContentDescription = "Save the new customer"
+                fabEnabled = name.isNotEmpty() && email.run { isValidEmail() && isNotEmpty() },
+                fabContentDescription = "Save the new customer",
             ) { innerPadding ->
                 AddBody(
                     name = name,

@@ -1,5 +1,6 @@
 package com.oliviermarteaux.localShared.composables
 
+import android.R.attr.bottom
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -12,6 +13,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.OutlinedTextFieldDefaults.contentPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.contentColorFor
@@ -44,6 +46,7 @@ fun SharedScaffold(
     onMenuItem2Click: (() -> Unit)? = null,
     menuItem1Title: String = "",
     menuItem2Title: String = "",
+    fabEnabled: Boolean = true,
     fabShape: Shape =  FloatingActionButtonDefaults.shape,
     fabContainerColor: Color =  FloatingActionButtonDefaults.containerColor,
     fabContentColor: Color = contentColorFor(fabContainerColor),
@@ -98,10 +101,10 @@ fun SharedScaffold(
         floatingActionButton = {
             onFabClick?.let {
                 FloatingActionButton(
-                    onClick = onFabClick,
-                    modifier = Modifier
+                    onClick = { if (fabEnabled) onFabClick() },
+                    modifier = modifier
                         .padding(bottom = 20.dp, end = 20.dp)
-                        .semantics{contentDescription = fabContentDescription},
+                        .semantics { contentDescription = fabContentDescription },
                     shape = fabShape,
                     containerColor = fabContainerColor,
                     contentColor = fabContentColor,
