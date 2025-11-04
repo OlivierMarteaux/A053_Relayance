@@ -11,8 +11,14 @@ import javax.inject.Inject
 class SharedViewModel @Inject constructor(): ViewModel() {
 
     //_ show the toast on home screen in case a new customer has been created from add screen
-    var newCustomerCreated: Boolean by mutableStateOf(false)
-        private set
-    fun showUserCreatedToast() {newCustomerCreated = true}
+    private var _newCustomerCreated: Boolean by mutableStateOf(false)
+    fun setNewCustomerCreated() { _newCustomerCreated = true }
 
+    //_ if newCustomerCreated is called on homeScreen then it is reset
+    val newCustomerCreated: Boolean
+        get() {
+            val currentState = _newCustomerCreated
+            _newCustomerCreated = false
+            return currentState
+        }
 }

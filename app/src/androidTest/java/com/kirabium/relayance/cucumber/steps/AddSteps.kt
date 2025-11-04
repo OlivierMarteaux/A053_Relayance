@@ -1,6 +1,10 @@
 package com.kirabium.relayance.cucumber.steps
 
+import android.R.attr.end
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
@@ -65,6 +69,14 @@ class AddSteps {
         composeRule.onNodeWithText("Charlie Chocolate").assertIsDisplayed()
         composeRule.onNodeWithText("Diana Dream").assertIsDisplayed()
         composeRule.onNodeWithText("Evan Escape").assertIsDisplayed()
+    }
+
+    @And("I should see {string} added at the end of the customer list")
+    fun iShouldSeeNewCustomer(newCustomer: String){
+        composeRule.onNodeWithText(newCustomer).assertIsDisplayed()
+        val customerNodes = composeRule.onAllNodes(hasClickAction())
+        val lastCustomerNode = customerNodes[customerNodes.fetchSemanticsNodes().size - 2]
+        lastCustomerNode.assertTextContains(newCustomer)
     }
 }
 

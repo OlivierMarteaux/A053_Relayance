@@ -30,7 +30,7 @@ fun AddScreen(
                 topAppBarModifier = Modifier.shadow(4.dp), // adds elevation shadow
                 onBackClick = navigateBack,
                 onFabClick = {
-                    addCustomer{showUserCreatedToast(); navigateBack()}
+                    addCustomer{setNewCustomerCreated(); navigateBack()}
                 },
                 fabContentDescription = "Save the new customer"
             ) { innerPadding ->
