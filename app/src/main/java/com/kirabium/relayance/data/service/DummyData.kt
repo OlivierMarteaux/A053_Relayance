@@ -18,4 +18,8 @@ object DummyData: CustomerApi {
         Customer(4, "Diana Dream", "diana@example.com", generateDate(1)),
         Customer(5, "Evan Escape", "evan@example.com", generateDate(0)),
     )
+
+    override fun addCustomer(customer: Customer) {
+        customers.add(customer)
+    }
 }

@@ -8,7 +8,10 @@ class CustomerLocalRepository @Inject constructor(private val customerApi: Custo
     : CustomerRepository {
 
     override fun getAllCustomers(): List<Customer> = customerApi.customers
+
     override fun getCustomer(customerId: Int): Customer? =
         getAllCustomers().find { it.id == customerId }
+
+    override fun addCustomer(customer: Customer) = customerApi.addCustomer(customer)
 
 }

@@ -10,4 +10,7 @@
     <string name="created_at">Created at: %1$s</string>
     <string name="new_ribbon">New</string>
     <string name="contentDescription_go_back">Go back</string>
+    <string name="add_screen_name_error_empty">Name is required</string>
+    <string name="add_screen_email_error_empty">Email is required</string>
+    <string name="add_screen_email_error_invalid">Invalid email</string>
 </resources>
