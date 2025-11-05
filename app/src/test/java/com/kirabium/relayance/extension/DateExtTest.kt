@@ -1,5 +1,6 @@
 package com.kirabium.relayance.extension
 
+import com.oliviermarteaux.shared.extensions.toHumanDate
 import org.junit.Test
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -24,7 +25,7 @@ class DateExtTest {
         val date = calendar.time
 
         // When convert it to human date
-        val formatted = with(DateExt) { date.toHumanDate() }
+        val formatted = date.toHumanDate()
 
         // Then
         val expected = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)
@@ -42,7 +43,7 @@ class DateExtTest {
         val date = calendar.time
 
         // When convert it to human date
-        val formatted = with(DateExt) { date.toHumanDate() }
+        val formatted = date.toHumanDate()
 
         // Then expected format always two digits for day and month
         assertEquals("07/03/2024", formatted)
@@ -54,7 +55,7 @@ class DateExtTest {
         val date = GregorianCalendar(2025, Calendar.DECEMBER, 25).time
 
         // When convert it to human date
-        val formatted = with(DateExt) { date.toHumanDate() }
+        val formatted = date.toHumanDate()
 
         // Then displayed in local format
         val expected = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Relayance</string>
+    <string name="detail_screen_title">Details</string>
+    <string name="add_customer">Ajouter un client</string>
+    <string name="email">E-mail</string>
+    <string name="save_changes">Sauvegarder les modifications</string>
+    <string name="name">Nom</string>
+    <string name="no_email">Pas d\'e-mail</string>
+    <string name="no_name">Pas de nom</string>
+    <string name="created_at">Créé à: %1$s</string>
+    <string name="new_ribbon">Nouveau</string>
+    <string name="contentDescription_go_back">Retour</string>
+    <string name="add_screen_name_error_empty">Un nom est requis</string>
+    <string name="add_screen_email_error_empty">Un e-mail est requis</string>
+    <string name="add_screen_email_error_invalid">E-mail invalide</string>
+    <string name="add_screen_fab_label">Sauvegarder le nouveau client</string>
+    <string name="home_screen_fab_label">Ajouter un nouveau client</string>
+    <string name="home_screen_new_customer_toast">Le nouveau client a bien été ajouté</string>
+</resources>

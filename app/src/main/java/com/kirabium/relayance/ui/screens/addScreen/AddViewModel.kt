@@ -23,8 +23,6 @@ class AddViewModel @Inject constructor(
         private set
     var email: String by mutableStateOf("")
         private set
-    var userCreated: Boolean by mutableStateOf(false)
-        private set
 
     fun onNameChange(newName: String) { name = newName }
     fun onEmailChange(newEmail: String) { email = newEmail }

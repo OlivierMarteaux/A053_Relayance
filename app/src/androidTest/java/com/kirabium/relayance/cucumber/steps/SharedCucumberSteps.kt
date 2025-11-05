@@ -1,6 +1,5 @@
-package com.oliviermarteaux.shared.test.cucumber.steps
+package com.kirabium.relayance.cucumber.steps
 
-import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.hasClickAction

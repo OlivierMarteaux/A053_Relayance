@@ -23,14 +23,6 @@ android {
         version = "0.8.8"
     }
 
-//    fun getInstrumentation(): String {
-//        return if (project.hasProperty("cucumber")) {
-//            "com.kirabium.relayance.runner.MyCucumberTestRunner"
-//        } else {
-//            "androidx.test.runner.AndroidJUnitRunner"
-//        }
-//    }
-
     defaultConfig {
         applicationId = "com.kirabium.relayance"
         minSdk = 24
@@ -38,21 +30,11 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        //_ allow choice between jUnit runner and cucumber one:
-//        testInstrumentationRunner = getInstrumentation()
-//        testInstrumentationRunner = "com.kirabium.relayance.runner.MyCucumberTestRunner"
         testInstrumentationRunner = "com.kirabium.relayance.test.MyCucumberTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
     }
-
-//    sourceSets {
-//        androidTest {
-//            assets.srcDirs += files("src/androidTest/assets")
-//        }
-//    }
 
     buildFeatures {
         viewBinding = true
@@ -90,6 +72,7 @@ android {
         }
     }
 }
+
 //_ Ensure use an emulator for android tests
 tasks.register("ensureEmulator") {
     doFirst {
@@ -131,7 +114,11 @@ val jacocoTestReport by tasks.registering(JacocoReport::class) {
         html.required.set(true)
     }
 
-    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug")
+//    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug")
+    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug") {
+        exclude("**/di/**")        // exclude DI packages
+        exclude("**/*Module*.*")   // exclude Module classes
+    }
     val mainSrc = androidExtension.sourceSets.getByName("main").java.srcDirs
 
     classDirectories.setFrom(debugTree)
@@ -196,6 +183,7 @@ dependencies {
     //_ oliviermarteaux
     implementation(libs.oliviermarteaux.compose)
     implementation(libs.oliviermarteaux.core)
+    androidTestImplementation(libs.oliviermarteaux.test)
     //_ navigation
     implementation(libs.navigation.compose)
     //_ hilt
@@ -205,29 +193,15 @@ dependencies {
 
     //_ UNIT TESTS
     testImplementation(libs.junit)
-    //_ cucumber for UnitTests
-    testImplementation(libs.cucumber.java)
-    testImplementation(libs.cucumber.junit)
-    testImplementation(libs.cucumber.picocontainer)
 
     //_ ANDROID TESTS
-    androidTestImplementation(libs.androidx.test.core)        // ActivityScenario support
-    androidTestImplementation(libs.androidx.test.rules)                 // ActivityScenarioRule (optional)
-    androidTestImplementation(libs.androidx.test.espresso.contrib)
-    androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(libs.androidx.test.espresso.intents)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit.ktx)
-    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.junit)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     //_ cucumber for AndroidTests
     androidTestImplementation(libs.cucumber.android)
     androidTestImplementation(libs.cucumber.junit)
     androidTestImplementation(libs.cucumber.picocontainer)
     androidTestImplementation(libs.cucumber.messages)
-    androidTestImplementation(kotlin("stdlib"))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
