@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.kirabium.relayance.R
 import com.kirabium.relayance.domain.model.Customer
-import com.kirabium.relayance.extension.DateExt.Companion.toHumanDate
 import com.oliviermarteaux.localShared.composables.SharedScaffold
+import com.oliviermarteaux.shared.extensions.toHumanDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

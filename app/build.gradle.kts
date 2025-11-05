@@ -131,7 +131,12 @@ val jacocoTestReport by tasks.registering(JacocoReport::class) {
         html.required.set(true)
     }
 
-    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug")
+
+//    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug")
+    val debugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug") {
+        exclude("**/di/**")        // exclude DI packages
+        exclude("**/*Module*.*")   // exclude Module classes
+    }
     val mainSrc = androidExtension.sourceSets.getByName("main").java.srcDirs
 
     classDirectories.setFrom(debugTree)
