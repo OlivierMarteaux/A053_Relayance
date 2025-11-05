@@ -20,7 +20,7 @@ lifecycleRuntimeKtx = "2.9.4"
 material = "1.13.0"
 messages = "30.1.0"
 navigationCompose = "2.9.5"
-oliviermarteaux = "2.1.0"
+oliviermarteaux = "3.6.0"
 rules = "1.7.0"
 runner = "1.7.0"
 uiTestJunit4 = "1.9.4"
@@ -63,7 +63,7 @@ material-icons-extended = { module = "androidx.compose.material:material-icons-e
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 oliviermarteaux-compose = { module = "com.github.OlivierMarteaux.shared-android-library:compose", version.ref = "oliviermarteaux" }
 oliviermarteaux-core = { module = "com.github.OlivierMarteaux.shared-android-library:core", version.ref = "oliviermarteaux" }
-
+oliviermarteaux-test = { module = "com.github.OlivierMarteaux.shared-android-library:test", version.ref = "oliviermarteaux" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

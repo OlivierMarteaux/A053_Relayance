@@ -20,7 +20,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.kirabium.relayance.R
 import com.kirabium.relayance.domain.model.Customer
 import com.kirabium.relayance.ui.navigation.SharedViewModel
-import com.oliviermarteaux.localShared.composables.SharedScaffold
+import com.oliviermarteaux.shared.composables.SharedScaffold
 import com.oliviermarteaux.shared.composables.SharedToast
 import com.oliviermarteaux.shared.composables.texts.TextBodyLarge
 import com.oliviermarteaux.shared.composables.texts.TextBodySmall
@@ -39,7 +39,7 @@ fun HomeScreen(
                 title = stringResource(R.string.app_name),
                 topAppBarModifier = Modifier.shadow(4.dp), // adds elevation shadow
                 onFabClick = { navigateToAddScreen(customers.size + 1) },
-                fabContentDescription = "Add a new customer"
+                fabContentDescription = stringResource(R.string.home_screen_fab_label)
             ){ innerPadding ->
                 Box{
                     HomeBody(
@@ -54,7 +54,7 @@ fun HomeScreen(
                         if (newCustomerCreated) {showNewCustomerCreatedToast = true}
                     }
                     if (showNewCustomerCreatedToast) {
-                        SharedToast("New customer successfully created")
+                        SharedToast(stringResource(R.string.home_screen_new_customer_toast))
                     }
                 }
             }

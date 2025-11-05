@@ -13,4 +13,7 @@
     <string name="add_screen_name_error_empty">Name is required</string>
     <string name="add_screen_email_error_empty">Email is required</string>
     <string name="add_screen_email_error_invalid">Invalid email</string>
+    <string name="add_screen_fab_label">Save the new customer</string>
+    <string name="home_screen_fab_label">Add a new customer</string>
+    <string name="home_screen_new_customer_toast">New customer successfully created</string>
 </resources>

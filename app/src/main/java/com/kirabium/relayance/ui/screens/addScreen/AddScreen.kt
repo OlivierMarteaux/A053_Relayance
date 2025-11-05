@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.kirabium.relayance.R
 import com.kirabium.relayance.ui.navigation.SharedViewModel
-import com.oliviermarteaux.localShared.composables.SharedScaffold
+import com.oliviermarteaux.shared.composables.SharedScaffold
 import com.oliviermarteaux.shared.composables.SharedOutlinedTextField
 import com.oliviermarteaux.shared.extensions.isValidEmail
 import com.oliviermarteaux.shared.ui.theme.SharedPadding
@@ -34,7 +34,7 @@ fun AddScreen(
                     addCustomer{setNewCustomerCreated(); navigateBack()}
                 },
                 fabEnabled = name.isNotEmpty() && email.run { isValidEmail() && isNotEmpty() },
-                fabContentDescription = "Save the new customer",
+                fabContentDescription = stringResource(R.string.add_screen_fab_label),
             ) { innerPadding ->
                 AddBody(
                     name = name,

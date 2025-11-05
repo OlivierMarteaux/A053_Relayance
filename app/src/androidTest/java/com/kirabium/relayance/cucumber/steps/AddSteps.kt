@@ -5,11 +5,10 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.kirabium.relayance.di.ComposeRuleHolder
-import com.oliviermarteaux.shared.test.di.ComposeRuleHolderInterface
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 
-class AddSteps(private val composeRuleHolder: ComposeRuleHolderInterface) {
+class AddSteps(private val composeRuleHolder: ComposeRuleHolder) {
 
     private val composeRule = composeRuleHolder.composeRule
 
