@@ -118,9 +118,3 @@ fun DetailBody(
         }
     }
 }
-
-@Preview
-@Composable
-private fun DetailScreenPreview() {
-    DetailScreen() {}
-}

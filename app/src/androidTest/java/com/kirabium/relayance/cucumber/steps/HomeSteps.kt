@@ -5,12 +5,12 @@ import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performScrollToIndex
-import com.kirabium.relayance.data.service.DummyData.customers
 import com.kirabium.relayance.di.ComposeRuleHolder
+import com.oliviermarteaux.shared.test.di.ComposeRuleHolderInterface
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 
-class HomeSteps(private val composeRuleHolder: ComposeRuleHolder) {
+class HomeSteps(private val composeRuleHolder: ComposeRuleHolderInterface) {
 
     private val composeRule: ComposeTestRule = composeRuleHolder.composeRule
 

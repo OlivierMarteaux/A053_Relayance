@@ -8,15 +8,16 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kirabium.relayance.R
-import com.kirabium.relayance.data.service.DummyData.customers
 import com.kirabium.relayance.domain.model.Customer
 import com.kirabium.relayance.ui.navigation.SharedViewModel
 import com.oliviermarteaux.localShared.composables.SharedScaffold
@@ -24,9 +25,6 @@ import com.oliviermarteaux.shared.composables.SharedToast
 import com.oliviermarteaux.shared.composables.texts.TextBodyLarge
 import com.oliviermarteaux.shared.composables.texts.TextBodySmall
 import com.oliviermarteaux.shared.ui.theme.SharedPadding
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 
 @Composable
 fun HomeScreen(

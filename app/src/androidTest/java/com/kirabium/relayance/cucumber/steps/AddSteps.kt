@@ -1,16 +1,15 @@
 package com.kirabium.relayance.cucumber.steps
 
-import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.kirabium.relayance.di.ComposeRuleHolder
+import com.oliviermarteaux.shared.test.di.ComposeRuleHolderInterface
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 
-class AddSteps(private val composeRuleHolder: ComposeRuleHolder) {
+class AddSteps(private val composeRuleHolder: ComposeRuleHolderInterface) {
 
     private val composeRule = composeRuleHolder.composeRule
 

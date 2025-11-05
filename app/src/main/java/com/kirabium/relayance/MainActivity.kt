@@ -16,20 +16,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val navController = rememberNavController()
-//
-//            // Observe current backstack entry
-//            val currentBackStackEntry by navController.currentBackStackEntryAsState()
-//            LaunchedEffect(currentBackStackEntry) {
-//                currentBackStackEntry?.destination?.route?.let { route ->
-//                    Log.i("OM_TAG", " ${route.uppercase()} SCREEN")
-//                }
-//            }
             RelayanceTheme {
-//        SetStatusBarColor(Color.Transparent)
-//                RequestNotificationPermission()
-//                getDeviceToken()
                 RelayanceNavHost(navHostController = navController)
-//                DismissKeyboardOnTapOutside { HomeScreen() }
             }
         }
     }
