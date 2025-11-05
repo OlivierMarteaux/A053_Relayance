@@ -41,7 +41,8 @@ android {
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         //_ allow choice between jUnit runner and cucumber one:
 //        testInstrumentationRunner = getInstrumentation()
-        testInstrumentationRunner = "com.kirabium.relayance.runner.MyCucumberTestRunner"
+//        testInstrumentationRunner = "com.kirabium.relayance.runner.MyCucumberTestRunner"
+        testInstrumentationRunner = "com.kirabium.relayance.test.MyCucumberTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }

@@ -1,11 +1,12 @@
 package com.kirabium.relayance.test
 
+import io.cucumber.android.runner.CucumberAndroidJUnitRunner
 import io.cucumber.junit.Cucumber
 import io.cucumber.junit.CucumberOptions
 import org.junit.runner.RunWith
 
 /**
- * CucumberTestCase class should stay empty and we don’t need any implementation inside.
+ * MyCucumberTestRunner class should stay empty and we don’t need any implementation inside.
  * This is just placeholder class where CucumberOptions annotation lives.
  * In addition, you may also noticed @SuppressWarnings(“unused”) , which indicates that we are not
  * contemplating to use this class at all.
@@ -33,9 +34,9 @@ import org.junit.runner.RunWith
     glue = [
         "com.kirabium.relayance.cucumber.steps",
 //        "com.oliviermarteaux.shared.test.cucumber.steps",
-//        "com.kirabium.relayance.di",
+        "com.kirabium.relayance.di",
 //        "com.kirabium.relayance.hooks"
-           ],
+    ],
     tags = "",
     plugin = [
         "pretty",                               // console output
@@ -45,4 +46,4 @@ import org.junit.runner.RunWith
     ]
 )
 @SuppressWarnings("unused")
-class CucumberTestCase
+class MyCucumberTestRunner : CucumberAndroidJUnitRunner()

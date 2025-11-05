@@ -10,6 +10,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import com.kirabium.relayance.MainActivity
+import com.kirabium.relayance.di.ComposeRuleHolder
 import io.cucumber.java.en.And
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
@@ -17,21 +18,23 @@ import io.cucumber.java.en.When
 import io.cucumber.junit.WithJunitRule
 import org.junit.Rule
 
-@WithJunitRule
-class AddSteps {
+//@WithJunitRule
+class AddSteps(private val composeRuleHolder: ComposeRuleHolder) {
 
-    @get:Rule
-    val composeRule = createAndroidComposeRule<MainActivity>()
+    private val composeRule = composeRuleHolder.composeRule
 
-    @Given("I am on the Home screen")
-    @Then("I should return to the Home screen")
-    fun iAmOnTheHomeScreen() {
-        composeRule.onNodeWithText("Alice Wonderland").assertIsDisplayed()
-        composeRule.onNodeWithText("Bob Builder").assertIsDisplayed()
-        composeRule.onNodeWithText("Charlie Chocolate").assertIsDisplayed()
-        composeRule.onNodeWithText("Diana Dream").assertIsDisplayed()
-        composeRule.onNodeWithText("Evan Escape").assertIsDisplayed()
-    }
+//    @get:Rule
+//    val composeRule = createAndroidComposeRule<MainActivity>()
+
+//    @Given("I am on the Home screen")
+//    @Then("I should return to the Home screen")
+//    fun iAmOnTheHomeScreen() {
+//        composeRule.onNodeWithText("Alice Wonderland").assertIsDisplayed()
+//        composeRule.onNodeWithText("Bob Builder").assertIsDisplayed()
+//        composeRule.onNodeWithText("Charlie Chocolate").assertIsDisplayed()
+//        composeRule.onNodeWithText("Diana Dream").assertIsDisplayed()
+//        composeRule.onNodeWithText("Evan Escape").assertIsDisplayed()
+//    }
 
     @When("I click on the {string} FAB button")
     fun iClickOnButton(fabLabel: String) {
