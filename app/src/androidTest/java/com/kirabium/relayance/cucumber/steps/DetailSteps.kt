@@ -14,14 +14,5 @@ class DetailSteps (private val composeRuleHolder: ComposeRuleHolder) {
 
     private val composeRule: ComposeTestRule = composeRuleHolder.composeRule
 
-    @When("I click on the {string} card")
-    fun iClickOnCard(cardText: String) {
-        // Use contentDescription or tag for your FABs
-        composeRule.onNodeWithText(cardText).performClick()
-    }
 
-    @Then("I should arrive on the Detail screen for the customer {string}")
-    fun iAmOnTheItemScreen(item: String) {
-        composeRule.onNodeWithText(item).assertIsDisplayed()
-    }
 }

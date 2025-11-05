@@ -14,7 +14,7 @@ Feature: Add a new customer
     And I enter "fievel.farwest@example.com" in the "email" field
     And I click on the "Save the new customer" FAB button
     Then I should return to the Home screen
-    And I should see "Fievel Farwest" added at the end of the customer list
+    And I should see "Fievel Farwest" added at the end of the "customers" list
     And I should see a toast message "New customer successfully created"
 
   Scenario: Cannot add new customer when name field is empty

@@ -8,7 +8,7 @@ Feature: Display the customer details
 
   Scenario Outline: Navigate to Detail Screen
     When I click on the "<name>" card
-    Then I should arrive on the Detail screen for the customer "<name>"
+    Then I should arrive on the "Detail" screen for the "customer" item named "<name>"
 
     Examples:
       | name               |
